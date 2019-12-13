@@ -1,0 +1,594 @@
+  [1m[35m (469.1ms)[0m  [1m[35mCREATE DATABASE "module_five_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (402.9ms)[0m  [1m[35mCREATE DATABASE "module_five_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6575223080247301305)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191213030821)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "birthday" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213030821"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFriends (20191213030909)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "friend_a_id" integer, "friend_b_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213030909"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20191213031031)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "category" character varying, "location" character varying, "hours" character varying, "user_id" integer, "rating" float, "favorite" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213031031"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMoods (20191213031057)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "moods" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213031057"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20191213031126)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213031126"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 03:30:28.744172"], ["updated_at", "2019-12-13 03:30:28.744172"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6575223080247301305)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "emileypalmer"], ["LIMIT", 1]]
+  [1m[36mUser Create (7.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Emiley"], ["last_name", "Palmer"], ["username", "emileypalmer"], ["email", "emiley.palmquist@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1990-12-20"], ["created_at", "2019-12-13 03:34:16.984648"], ["updated_at", "2019-12-13 03:34:16.984648"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "kaileypow"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Kailey"], ["last_name", "Pow"], ["username", "kaileypow"], ["email", "kailey.pow@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1999-05-20"], ["created_at", "2019-12-13 03:34:16.999368"], ["updated_at", "2019-12-13 03:34:16.999368"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "carisapow"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Carisa"], ["last_name", "Pow"], ["username", "carisapow"], ["email", "carisa.pow@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1999-05-20"], ["created_at", "2019-12-13 03:34:17.004226"], ["updated_at", "2019-12-13 03:34:17.004226"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "justinpalmer"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Justin"], ["last_name", "Palmer"], ["username", "justinpalmer"], ["email", "justin.palmer@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1993-03-20"], ["created_at", "2019-12-13 03:34:17.008439"], ["updated_at", "2019-12-13 03:34:17.008439"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "ayvafos"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Ayva"], ["last_name", "Fos"], ["username", "ayvafos"], ["email", "ayva.fos@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "2010-02-07"], ["created_at", "2019-12-13 03:34:17.012981"], ["updated_at", "2019-12-13 03:34:17.012981"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (1.1ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 03:34:17.046710"], ["updated_at", "2019-12-13 03:34:17.046710"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 03:34:17.053325"], ["updated_at", "2019-12-13 03:34:17.053325"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 03:34:17.059100"], ["updated_at", "2019-12-13 03:34:17.059100"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 03:34:17.064788"], ["updated_at", "2019-12-13 03:34:17.064788"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 03:34:17.080679"], ["updated_at", "2019-12-13 03:34:17.080679"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (1.0ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.094168"], ["updated_at", "2019-12-13 03:34:17.094168"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 2], ["created_at", "2019-12-13 03:34:17.099610"], ["updated_at", "2019-12-13 03:34:17.099610"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 3], ["created_at", "2019-12-13 03:34:17.103831"], ["updated_at", "2019-12-13 03:34:17.103831"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.107599"], ["updated_at", "2019-12-13 03:34:17.107599"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.111683"], ["updated_at", "2019-12-13 03:34:17.111683"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.124405"], ["updated_at", "2019-12-13 03:34:17.124405"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.129127"], ["updated_at", "2019-12-13 03:34:17.129127"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.133261"], ["updated_at", "2019-12-13 03:34:17.133261"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.138428"], ["updated_at", "2019-12-13 03:34:17.138428"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.142560"], ["updated_at", "2019-12-13 03:34:17.142560"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "japanese"], ["user_id", 1], ["created_at", "2019-12-13 03:34:17.146579"], ["updated_at", "2019-12-13 03:34:17.146579"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mFriend Load (0.5ms)[0m  [1m[34mSELECT "friends".* FROM "friends" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mMood Load (0.5ms)[0m  [1m[34mSELECT "moods".* FROM "moods" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (201.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "module_five_backend_development"[0m
+  [1m[35m (199.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "module_five_backend_test"[0m
+  [1m[35m (460.2ms)[0m  [1m[35mCREATE DATABASE "module_five_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (391.5ms)[0m  [1m[35mCREATE DATABASE "module_five_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "friend_a_id" integer, "friend_b_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "moods" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "moods" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "restaurants" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "category" character varying, "location" character varying, "hours" character varying, "user_id" integer, "rating" float, "favorite" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "birthday" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191213031126)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191213030821),
+(20191213030909),
+(20191213031031),
+(20191213031057);
+
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 03:37:11.467441"], ["updated_at", "2019-12-13 03:37:11.467441"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "127f51a354c30efe5cab075e356a68f81eeacbab"], ["created_at", "2019-12-13 03:37:11.475068"], ["updated_at", "2019-12-13 03:37:11.475068"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "friends" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "friend_a_id" integer, "friend_b_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "moods" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "moods" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "restaurants" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "category" character varying, "location" character varying, "hours" character varying, "user_id" integer, "rating" float, "favorite" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "username" character varying, "email" character varying, "password_digest" character varying, "birthday" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191213031126)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191213030821),
+(20191213030909),
+(20191213031031),
+(20191213031057);
+
+[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 03:37:11.569156"], ["updated_at", "2019-12-13 03:37:11.569156"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-12-13 03:37:11.574858"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "127f51a354c30efe5cab075e356a68f81eeacbab"], ["created_at", "2019-12-13 03:37:11.580047"], ["updated_at", "2019-12-13 03:37:11.580047"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "emileypalmer"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Emiley"], ["last_name", "Palmer"], ["username", "emileypalmer"], ["email", "emiley.palmquist@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1990-12-20"], ["created_at", "2019-12-13 03:37:11.642134"], ["updated_at", "2019-12-13 03:37:11.642134"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "kaileypow"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Kailey"], ["last_name", "Pow"], ["username", "kaileypow"], ["email", "kailey.pow@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1999-05-20"], ["created_at", "2019-12-13 03:37:11.649153"], ["updated_at", "2019-12-13 03:37:11.649153"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "carisapow"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Carisa"], ["last_name", "Pow"], ["username", "carisapow"], ["email", "carisa.pow@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1999-05-20"], ["created_at", "2019-12-13 03:37:11.654259"], ["updated_at", "2019-12-13 03:37:11.654259"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "justinpalmer"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Justin"], ["last_name", "Palmer"], ["username", "justinpalmer"], ["email", "justin.palmer@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "1993-03-20"], ["created_at", "2019-12-13 03:37:11.658741"], ["updated_at", "2019-12-13 03:37:11.658741"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "ayvafos"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "birthday", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Ayva"], ["last_name", "Fos"], ["username", "ayvafos"], ["email", "ayva.fos@fakemail.com"], ["password_digest", "helloworld"], ["birthday", "2010-02-07"], ["created_at", "2019-12-13 03:37:11.662951"], ["updated_at", "2019-12-13 03:37:11.662951"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.8ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 03:37:11.683362"], ["updated_at", "2019-12-13 03:37:11.683362"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 03:37:11.698452"], ["updated_at", "2019-12-13 03:37:11.698452"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 03:37:11.704265"], ["updated_at", "2019-12-13 03:37:11.704265"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 03:37:11.709897"], ["updated_at", "2019-12-13 03:37:11.709897"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 03:37:11.714757"], ["updated_at", "2019-12-13 03:37:11.714757"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (0.5ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.728078"], ["updated_at", "2019-12-13 03:37:11.728078"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 2], ["created_at", "2019-12-13 03:37:11.732624"], ["updated_at", "2019-12-13 03:37:11.732624"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 3], ["created_at", "2019-12-13 03:37:11.736782"], ["updated_at", "2019-12-13 03:37:11.736782"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (0.3ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.741144"], ["updated_at", "2019-12-13 03:37:11.741144"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMood Create (0.5ms)[0m  [1m[32mINSERT INTO "moods" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "happy"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.745840"], ["updated_at", "2019-12-13 03:37:11.745840"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.759257"], ["updated_at", "2019-12-13 03:37:11.759257"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.764529"], ["updated_at", "2019-12-13 03:37:11.764529"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.768931"], ["updated_at", "2019-12-13 03:37:11.768931"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.773630"], ["updated_at", "2019-12-13 03:37:11.773630"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mexican"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.785315"], ["updated_at", "2019-12-13 03:37:11.785315"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "japanese"], ["user_id", 1], ["created_at", "2019-12-13 03:37:11.790102"], ["updated_at", "2019-12-13 03:37:11.790102"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mFriend Load (0.5ms)[0m  [1m[34mSELECT "friends".* FROM "friends" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (43.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1[0m  [["friend_b_id", 1]]
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (18.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 15:45:36.857266"], ["updated_at", "2019-12-13 15:45:36.857266"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1 LIMIT $2[0m  [["friend_b_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 2], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 4], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1 LIMIT $2[0m  [["friend_a_id", 5], ["LIMIT", 11]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (1.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:40:09.968988"], ["updated_at", "2019-12-13 17:40:09.968988"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:40:09.972798"], ["updated_at", "2019-12-13 17:40:09.972798"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:40:09.975091"], ["updated_at", "2019-12-13 17:40:09.975091"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:40:09.977136"], ["updated_at", "2019-12-13 17:40:09.977136"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:40:09.979367"], ["updated_at", "2019-12-13 17:40:09.979367"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1[0m  [["friend_b_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:41:38.447356"], ["updated_at", "2019-12-13 17:41:38.447356"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:41:38.450669"], ["updated_at", "2019-12-13 17:41:38.450669"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:41:38.454424"], ["updated_at", "2019-12-13 17:41:38.454424"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:41:38.467318"], ["updated_at", "2019-12-13 17:41:38.467318"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:41:38.469610"], ["updated_at", "2019-12-13 17:41:38.469610"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:41:46.863011"], ["updated_at", "2019-12-13 17:41:46.863011"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:41:46.865702"], ["updated_at", "2019-12-13 17:41:46.865702"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1[0m  [["friend_b_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.6ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:42:22.012899"], ["updated_at", "2019-12-13 17:42:22.012899"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:42:22.016306"], ["updated_at", "2019-12-13 17:42:22.016306"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:42:22.023399"], ["updated_at", "2019-12-13 17:42:22.023399"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:42:22.025546"], ["updated_at", "2019-12-13 17:42:22.025546"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:42:22.028768"], ["updated_at", "2019-12-13 17:42:22.028768"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:42:22.031700"], ["updated_at", "2019-12-13 17:42:22.031700"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:42:22.034599"], ["updated_at", "2019-12-13 17:42:22.034599"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 17:42:22.039046"], ["updated_at", "2019-12-13 17:42:22.039046"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 17:42:22.041093"], ["updated_at", "2019-12-13 17:42:22.041093"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 5]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 17:42:22.046812"], ["updated_at", "2019-12-13 17:42:22.046812"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 17:42:22.049164"], ["updated_at", "2019-12-13 17:42:22.049164"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.6ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:44:54.007876"], ["updated_at", "2019-12-13 17:44:54.007876"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 2], ["created_at", "2019-12-13 17:44:54.011324"], ["updated_at", "2019-12-13 17:44:54.011324"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (1.6ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:44:54.017085"], ["updated_at", "2019-12-13 17:44:54.017085"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:44:54.021921"], ["updated_at", "2019-12-13 17:44:54.021921"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:44:54.024109"], ["updated_at", "2019-12-13 17:44:54.024109"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:44:54.026045"], ["updated_at", "2019-12-13 17:44:54.026045"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 3], ["created_at", "2019-12-13 17:44:54.028000"], ["updated_at", "2019-12-13 17:44:54.028000"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 17:44:54.031089"], ["updated_at", "2019-12-13 17:44:54.031089"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 4], ["created_at", "2019-12-13 17:44:54.033244"], ["updated_at", "2019-12-13 17:44:54.033244"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 17:44:54.036448"], ["updated_at", "2019-12-13 17:44:54.036448"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 1], ["friend_b_id", 5], ["created_at", "2019-12-13 17:44:54.039191"], ["updated_at", "2019-12-13 17:44:54.039191"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.376236"], ["updated_at", "2019-12-13 17:58:29.376236"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.378945"], ["updated_at", "2019-12-13 17:58:29.378945"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.381261"], ["updated_at", "2019-12-13 17:58:29.381261"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.7ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.383614"], ["updated_at", "2019-12-13 17:58:29.383614"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.387510"], ["updated_at", "2019-12-13 17:58:29.387510"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.389758"], ["updated_at", "2019-12-13 17:58:29.389758"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.391896"], ["updated_at", "2019-12-13 17:58:29.391896"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.393951"], ["updated_at", "2019-12-13 17:58:29.393951"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.395966"], ["updated_at", "2019-12-13 17:58:29.395966"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.397947"], ["updated_at", "2019-12-13 17:58:29.397947"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.400009"], ["updated_at", "2019-12-13 17:58:29.400009"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.401929"], ["updated_at", "2019-12-13 17:58:29.401929"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.404013"], ["updated_at", "2019-12-13 17:58:29.404013"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.406103"], ["updated_at", "2019-12-13 17:58:29.406103"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.408160"], ["updated_at", "2019-12-13 17:58:29.408160"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.410308"], ["updated_at", "2019-12-13 17:58:29.410308"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.412882"], ["updated_at", "2019-12-13 17:58:29.412882"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.415387"], ["updated_at", "2019-12-13 17:58:29.415387"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.418902"], ["updated_at", "2019-12-13 17:58:29.418902"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.421028"], ["updated_at", "2019-12-13 17:58:29.421028"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.423311"], ["updated_at", "2019-12-13 17:58:29.423311"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.425376"], ["updated_at", "2019-12-13 17:58:29.425376"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.427322"], ["updated_at", "2019-12-13 17:58:29.427322"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.429418"], ["updated_at", "2019-12-13 17:58:29.429418"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.431376"], ["updated_at", "2019-12-13 17:58:29.431376"]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.6ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.434909"], ["updated_at", "2019-12-13 17:58:29.434909"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.437552"], ["updated_at", "2019-12-13 17:58:29.437552"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.439566"], ["updated_at", "2019-12-13 17:58:29.439566"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 17:58:29.441536"], ["updated_at", "2019-12-13 17:58:29.441536"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1[0m  [["friend_b_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_b_id" WHERE "friends"."friend_a_id" = $1[0m  [["friend_a_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.8ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.018786"], ["updated_at", "2019-12-13 18:06:16.018786"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.021855"], ["updated_at", "2019-12-13 18:06:16.021855"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.024076"], ["updated_at", "2019-12-13 18:06:16.024076"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.026231"], ["updated_at", "2019-12-13 18:06:16.026231"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.028540"], ["updated_at", "2019-12-13 18:06:16.028540"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.031462"], ["updated_at", "2019-12-13 18:06:16.031462"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.033835"], ["updated_at", "2019-12-13 18:06:16.033835"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.037127"], ["updated_at", "2019-12-13 18:06:16.037127"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.039179"], ["updated_at", "2019-12-13 18:06:16.039179"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.041145"], ["updated_at", "2019-12-13 18:06:16.041145"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.043047"], ["updated_at", "2019-12-13 18:06:16.043047"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.046517"], ["updated_at", "2019-12-13 18:06:16.046517"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.048884"], ["updated_at", "2019-12-13 18:06:16.048884"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.050888"], ["updated_at", "2019-12-13 18:06:16.050888"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.052757"], ["updated_at", "2019-12-13 18:06:16.052757"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.054810"], ["updated_at", "2019-12-13 18:06:16.054810"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.056819"], ["updated_at", "2019-12-13 18:06:16.056819"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.058897"], ["updated_at", "2019-12-13 18:06:16.058897"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.060813"], ["updated_at", "2019-12-13 18:06:16.060813"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 2], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.062917"], ["updated_at", "2019-12-13 18:06:16.062917"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.064869"], ["updated_at", "2019-12-13 18:06:16.064869"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.066788"], ["updated_at", "2019-12-13 18:06:16.066788"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.068866"], ["updated_at", "2019-12-13 18:06:16.068866"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.070791"], ["updated_at", "2019-12-13 18:06:16.070791"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.4ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 3], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.073446"], ["updated_at", "2019-12-13 18:06:16.073446"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.075765"], ["updated_at", "2019-12-13 18:06:16.075765"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 4], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.078995"], ["updated_at", "2019-12-13 18:06:16.078995"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.081094"], ["updated_at", "2019-12-13 18:06:16.081094"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriend Create (0.3ms)[0m  [1m[32mINSERT INTO "friends" ("friend_a_id", "friend_b_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["friend_a_id", 5], ["friend_b_id", 1], ["created_at", "2019-12-13 18:06:16.083131"], ["updated_at", "2019-12-13 18:06:16.083131"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friends" ON "users"."id" = "friends"."friend_a_id" WHERE "friends"."friend_b_id" = $1[0m  [["friend_b_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
