@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+
   def index
     friends = Category.all
     render json: friends
@@ -20,7 +21,11 @@ class FriendsController < ApplicationController
 
   def destroy
     friend = Friend.find(params[:id])
-    friend.destroy
+    if friend.destroy
+      render json: {message: "Successfully deleted Friendship"}
+    else
+      render json: {error: "Something wen wrong"}
+    end
   end
 
   private
